@@ -11,13 +11,15 @@ SOURCES += \
     MenuItem.cpp \
     Order.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    muku.cpp
 
 HEADERS += \
     Menu.h \
     MenuItem.h \
     Order.h \
-    mainwindow.h
+    mainwindow.h \
+    muku.h
 
 FORMS += \
     mainwindow.ui
