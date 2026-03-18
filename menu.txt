@@ -1,0 +1,5 @@
+1,Cheeseburger,5.99,Main
+2,Fries,2.49,Sides
+3,Soda,1.99,Beverage
+4,Pepperoni Pizza,8.99,Main
+5,Chocolate Cake,4.50,Dessert
