@@ -3,5 +3,6 @@
         <file>biryani.png</file>
         <file>hamburger.png</file>
         <file>menu.txt</file>
+        <file>animation.qml</file>
     </qresource>
 </RCC>

@@ -305,7 +305,11 @@ Makefile: ../../OOPs_project.pro ../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/mksp
 		../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/mkspecs/features/lex.prf \
 		../../OOPs_project.pro \
 		../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6Widgets.prl \
+		../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6Quick.prl \
+		../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6OpenGL.prl \
 		../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6Gui.prl \
+		../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6Qml.prl \
+		../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6Network.prl \
 		../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6Core.prl \
 		../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6EntryPoint.prl \
 		../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/mkspecs/features/build_pass.prf \
@@ -546,7 +550,11 @@ Makefile: ../../OOPs_project.pro ../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/mksp
 ../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/mkspecs/features/lex.prf:
 ../../OOPs_project.pro:
 ../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6Widgets.prl:
+../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6Quick.prl:
+../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6OpenGL.prl:
 ../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6Gui.prl:
+../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6Qml.prl:
+../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6Network.prl:
 ../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6Core.prl:
 ../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/lib/Qt6EntryPoint.prl:
 ../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/mkspecs/features/build_pass.prf:

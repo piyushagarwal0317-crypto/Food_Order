@@ -1,0 +1,110 @@
+import QtQuick 2.15
+
+Rectangle {
+    width: 400
+    height: 600
+
+    // Warm, appetizing gradient background
+    gradient: Gradient {
+        GradientStop { position: 0.0; color: "#FF7E5F" } // Warm coral
+        GradientStop { position: 1.0; color: "#FEB47B" } // Soft orange
+    }
+
+    // Main Restaurant Title
+    Text {
+        id: titleText
+        text: "Food Villa"
+        font.pixelSize: 54
+        font.bold: true
+        font.family: "Helvetica"
+        color: "white"
+        anchors.centerIn: parent
+
+        // Start completely shrunk and invisible
+        scale: 0.1
+        opacity: 0.0
+
+        // Subtle shadow for depth
+        style: Text.DropShadow
+        styleColor: "#D35400"
+    }
+
+    // Loading / Subtitle Text
+    Text {
+        id: loadingText
+        text: "Setting the table..."
+        font.pixelSize: 18
+        font.italic: true
+        color: "white"
+        anchors.top: titleText.bottom
+        anchors.topMargin: 20
+        anchors.horizontalCenter: parent.horizontalCenter
+        opacity: 0.0 // Starts hidden
+    }
+
+    // Main Animation Sequence
+    SequentialAnimation {
+        running: true // Starts automatically when the page loads
+        loops: 1
+
+        // 1. Pop-in the title (scale up and fade in simultaneously)
+        ParallelAnimation {
+            NumberAnimation {
+                target: titleText
+                property: "scale"
+                to: 1.2
+                duration: 800
+                easing.type: Easing.OutBack
+            }
+            NumberAnimation {
+                target: titleText
+                property: "opacity"
+                to: 1.0
+                duration: 600
+            }
+        }
+
+        // 2. Settle the title back to normal scale
+        NumberAnimation {
+            target: titleText
+            property: "scale"
+            to: 1.0
+            duration: 300
+            easing.type: Easing.InOutQuad
+        }
+
+        // 3. Fade in the loading text
+        NumberAnimation {
+            target: loadingText
+            property: "opacity"
+            to: 1.0
+            duration: 400
+        }
+
+        // 4. Trigger the continuous pulsing animation for the loading text
+        ScriptAction {
+            script: pulseAnimation.start()
+        }
+    }
+
+    // Pulsing animation for the "Setting the table..." text
+    SequentialAnimation {
+        id: pulseAnimation
+        loops: Animation.Infinite // Keeps running until the page closes
+
+        NumberAnimation {
+            target: loadingText
+            property: "opacity"
+            to: 0.3
+            duration: 700
+            easing.type: Easing.InOutSine
+        }
+        NumberAnimation {
+            target: loadingText
+            property: "opacity"
+            to: 1.0
+            duration: 700
+            easing.type: Easing.InOutSine
+        }
+    }
+}
