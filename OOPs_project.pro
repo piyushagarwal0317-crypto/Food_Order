@@ -35,3 +35,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     ../Downloads/hamburger.png \
     menu.txt
+
+RESOURCES += \
+    resources.qrc
