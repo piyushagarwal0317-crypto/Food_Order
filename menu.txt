@@ -1,5 +1,32 @@
-1,Cheeseburger,5.99,Main
-2,Fries,2.49,Sides
-3,Soda,1.99,Beverage
-4,Pepperoni Pizza,8.99,Main
-5,Chocolate Cake,4.50,Dessert
+1,Cheeseburger,6.99,Main
+2,Double Patty Burger,8.99,Main
+3,Grilled Chicken Sandwich,7.49,Main
+4,Spicy Veggie Wrap,6.49,Main
+5,Margherita Pizza,10.99,Main
+6,Paneer Pizza,12.99,Main
+7,Spaghetti,11.49,Main
+8,Chicken Salad,8.99,Main
+9,Fish and Chips,13.99,Main
+10,Frites,16.99,Main
+11,French Fries,2.99,Sides
+12,Sweet Potato Fries,3.49,Sides
+13,Onion Rings,3.99,Sides
+14,Mozzarella Sticks,4.99,Sides
+15,Garlic Bread,3.49,Sides
+16,Mashed Potatoes,2.99,Sides
+17,Side House Salad,3.99,Sides
+18,Coleslaw,1.99,Sides
+19,Cola,1.99,Beverage
+20,Diet Cola,1.99,Beverage
+21,Fresh Lemonade,2.49,Beverage
+22,Iced Tea,1.99,Beverage
+23,Hot Black Coffee,1.49,Beverage
+24,Vanilla Milkshake,4.49,Beverage
+25,Chocolate Milkshake,4.49,Beverage
+26,Bottled Water,1.00,Beverage
+27,Chocolate Lava Cake,5.99,Dessert
+28,New York Cheesecake,6.49,Dessert
+29,Warm Apple Pie,4.99,Dessert
+30,Vanilla Bean Ice Cream,2.99,Dessert
+31,Fudge Brownie Sundae,5.49,Dessert
+32,Classic Tiramisu,6.99,Dessert
