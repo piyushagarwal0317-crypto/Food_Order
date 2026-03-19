@@ -10,6 +10,7 @@ SOURCES += \
     Menu.cpp \
     MenuItem.cpp \
     Order.cpp \
+    logindialog.cpp \
     main.cpp \
     mainwindow.cpp \
     muku.cpp
@@ -18,10 +19,12 @@ HEADERS += \
     Menu.h \
     MenuItem.h \
     Order.h \
+    logindialog.h \
     mainwindow.h \
     muku.h
 
 FORMS += \
+    logindialog.ui \
     mainwindow.ui
 
 # Default rules for deployment.
@@ -30,4 +33,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    ../Downloads/hamburger.png \
     menu.txt
