@@ -3,28 +3,52 @@
 #include <stdexcept>
 #include <fstream>   // For reading files
 #include <sstream>   // For splitting strings
+#include <QFile>
+#include <QTextStream>
+#include <QStringList>
+#include <QDebug>
 
 void Menu::loadMenuFromFile(const std::string& filename) {
-    std::ifstream file(filename);
-    std::string line;
+    // 1. Convert the standard C++ string to a Qt String
+    QString qtFilename = QString::fromStdString(filename);
 
-    while (std::getline(file, line)) {
-        std::stringstream ss(line);
-        std::string idStr, name, priceStr, category;
+    // 2. Open the file using Qt's QFile (This understands the ":/" secret path!)
+    QFile file(qtFilename);
 
-        // Read up to each comma
-        std::getline(ss, idStr, ',');
-        std::getline(ss, name, ',');
-        std::getline(ss, priceStr, ',');
-        std::getline(ss, category, ','); // Grab the new category!
+    // 3. Check if the file successfully opened
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "CRITICAL ERROR: Could not open menu file at:" << qtFilename;
+        return;
+    }
 
-        // If the line wasn't empty, create the item and add it to the list
-        if (!idStr.empty()) {
-            int id = std::stoi(idStr);
-            double price = std::stod(priceStr);
+    // 4. Read the file line by line
+    QTextStream in(&file);
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+
+        // Skip empty lines just in case there are blank spaces at the bottom of the text file
+        if (line.trimmed().isEmpty()) {
+            continue;
+        }
+
+        // 5. Split the line into a list using the comma as the separator
+        QStringList parts = line.split(',');
+
+        // 6. Make sure the line actually has all 4 pieces of data!
+        if (parts.size() >= 4) {
+            // Grab the data, trim off extra spaces, and convert back to C++ formats
+            int id = parts[0].trimmed().toInt();
+            std::string name = parts[1].trimmed().toStdString();
+            double price = parts[2].trimmed().toDouble();
+            std::string category = parts[3].trimmed().toStdString();
+
+            // Push it into your C++ list!
             items.push_back(MenuItem(id, name, price, category));
         }
     }
+
+    // 7. Always close the file
+    file.close();
 }
 
 void Menu::addItem(const MenuItem& item) {
