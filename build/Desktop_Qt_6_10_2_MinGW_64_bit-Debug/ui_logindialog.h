@@ -29,6 +29,8 @@ public:
     QPushButton *loginButton;
     QLineEdit *usernameEdit;
     QLabel *label_4;
+    QLabel *label_5;
+    QLabel *label_6;
 
     void setupUi(QDialog *LoginDialog)
     {
@@ -53,7 +55,23 @@ public:
         passwordEdit->setEchoMode(QLineEdit::EchoMode::Password);
         loginButton = new QPushButton(LoginDialog);
         loginButton->setObjectName("loginButton");
-        loginButton->setGeometry(QRect(120, 300, 111, 31));
+        loginButton->setGeometry(QRect(110, 290, 111, 41));
+        loginButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #E0E0E0; /* A nice, light faded gray */\n"
+"    color: #333333; /* Dark gray text so it's easy to read */\n"
+"    font-weight: bold;\n"
+"    border-radius: 8px;\n"
+"    padding: 8px;\n"
+"    border: 1px solid #BDBDBD; /* Adds a very subtle outline */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #D6D6D6; /* Gets slightly darker when the mouse is over it */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #BDBDBD; /* Gets even darker when you actually click it */\n"
+"}"));
         usernameEdit = new QLineEdit(LoginDialog);
         usernameEdit->setObjectName("usernameEdit");
         usernameEdit->setGeometry(QRect(120, 110, 181, 29));
@@ -63,6 +81,16 @@ public:
         QFont font;
         font.setBold(true);
         label_4->setFont(font);
+        label_5 = new QLabel(LoginDialog);
+        label_5->setObjectName("label_5");
+        label_5->setGeometry(QRect(10, 10, 63, 61));
+        label_5->setPixmap(QPixmap(QString::fromUtf8(":/biryani.png")));
+        label_5->setScaledContents(true);
+        label_6 = new QLabel(LoginDialog);
+        label_6->setObjectName("label_6");
+        label_6->setGeometry(QRect(280, 20, 63, 51));
+        label_6->setPixmap(QPixmap(QString::fromUtf8(":/hamburger.png")));
+        label_6->setScaledContents(true);
 
         retranslateUi(LoginDialog);
 
@@ -75,8 +103,12 @@ public:
         label->setText(QCoreApplication::translate("LoginDialog", "Username :", nullptr));
         label_2->setText(QCoreApplication::translate("LoginDialog", "Email/Phone :", nullptr));
         label_3->setText(QCoreApplication::translate("LoginDialog", "Password :", nullptr));
+        emailPhoneEdit->setPlaceholderText(QCoreApplication::translate("LoginDialog", "e.g.  foodie123", nullptr));
         loginButton->setText(QCoreApplication::translate("LoginDialog", "Login", nullptr));
+        usernameEdit->setPlaceholderText(QCoreApplication::translate("LoginDialog", "xyz@gmail.com", nullptr));
         label_4->setText(QCoreApplication::translate("LoginDialog", "Welcome to Food Villa", nullptr));
+        label_5->setText(QString());
+        label_6->setText(QString());
     } // retranslateUi
 
 };

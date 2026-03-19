@@ -36,3 +36,6 @@ DISTFILES += \
     ../Downloads/hamburger.png \
     .gitignore \
     menu.txt
+
+RESOURCES += \
+    resources.qrc

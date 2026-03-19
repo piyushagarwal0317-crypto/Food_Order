@@ -1,0 +1,10 @@
+release/Menu.o
+release/MenuItem.o
+release/Order.o
+release/logindialog.o
+release/main.o
+release/mainwindow.o
+release/muku.o
+release/qrc_resources.o
+release/moc_logindialog.o
+release/moc_mainwindow.o
