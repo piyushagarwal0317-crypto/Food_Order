@@ -61,6 +61,18 @@
      <height>29</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+    background-color: #1c2833;  /* Deep Midnight Blue */
+    color: #fdf2e9;             /* Soft off-white text so it isn't harsh */
+    border: 2px solid #2980b9;  /* Bright blue border */
+    border-radius: 8px;
+    padding: 5px;
+}
+QLineEdit:focus {
+    border: 2px solid #f39c12;  /* Border turns warm orange when typing */
+}</string>
+   </property>
    <property name="placeholderText">
     <string>e.g.  foodie123</string>
    </property>
@@ -73,6 +85,18 @@
      <width>181</width>
      <height>29</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+    background-color: #1c2833;  /* Deep Midnight Blue */
+    color: #fdf2e9;             /* Soft off-white text so it isn't harsh */
+    border: 2px solid #2980b9;  /* Bright blue border */
+    border-radius: 8px;
+    padding: 5px;
+}
+QLineEdit:focus {
+    border: 2px solid #f39c12;  /* Border turns warm orange when typing */
+}</string>
    </property>
    <property name="echoMode">
     <enum>QLineEdit::EchoMode::Password</enum>
@@ -115,8 +139,35 @@ QPushButton:pressed {
      <x>120</x>
      <y>110</y>
      <width>181</width>
-     <height>29</height>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+    background-color: #1c2833;  /* Deep Midnight Blue */
+    color: #fdf2e9;             /* Soft off-white text so it isn't harsh */
+    border: 2px solid #2980b9;  /* Bright blue border */
+    border-radius: 8px;QLineEdit {
+    background-color: #1c2833;  /* Your midnight navy color */
+    color: #fdf2e9;
+    border: 2px solid #2980b9;
+    border-radius: 8px;
+    
+    /* FIX: Reduce left and right padding to 2px to stop cutting off text */
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #f39c12;
+}
+    padding: 5px;
+}
+QLineEdit:focus {
+    border: 2px solid #f39c12;  /* Border turns warm orange when typing */
+}</string>
    </property>
    <property name="placeholderText">
     <string>xyz@gmail.com</string>
@@ -125,7 +176,7 @@ QPushButton:pressed {
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>70</x>
      <y>20</y>
      <width>211</width>
      <height>71</height>
@@ -138,6 +189,9 @@ QPushButton:pressed {
    </property>
    <property name="text">
     <string>Welcome to Food Villa</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
@@ -178,6 +232,30 @@ QPushButton:pressed {
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QLabel" name="backgroundLabel">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>-10</y>
+     <width>471</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>backgroundLabel</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_3</zorder>
+  <zorder>emailPhoneEdit</zorder>
+  <zorder>passwordEdit</zorder>
+  <zorder>loginButton</zorder>
+  <zorder>usernameEdit</zorder>
+  <zorder>label_4</zorder>
+  <zorder>label_5</zorder>
+  <zorder>label_6</zorder>
  </widget>
  <resources>
   <include location="resources.qrc"/>

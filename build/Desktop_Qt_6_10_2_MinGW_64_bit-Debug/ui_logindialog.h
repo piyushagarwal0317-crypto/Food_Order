@@ -31,6 +31,7 @@ public:
     QLabel *label_4;
     QLabel *label_5;
     QLabel *label_6;
+    QLabel *backgroundLabel;
 
     void setupUi(QDialog *LoginDialog)
     {
@@ -91,6 +92,20 @@ public:
         label_6->setGeometry(QRect(280, 20, 63, 51));
         label_6->setPixmap(QPixmap(QString::fromUtf8(":/hamburger.png")));
         label_6->setScaledContents(true);
+        backgroundLabel = new QLabel(LoginDialog);
+        backgroundLabel->setObjectName("backgroundLabel");
+        backgroundLabel->setGeometry(QRect(-10, -10, 471, 381));
+        backgroundLabel->raise();
+        label->raise();
+        label_2->raise();
+        label_3->raise();
+        emailPhoneEdit->raise();
+        passwordEdit->raise();
+        loginButton->raise();
+        usernameEdit->raise();
+        label_4->raise();
+        label_5->raise();
+        label_6->raise();
 
         retranslateUi(LoginDialog);
 
@@ -109,6 +124,7 @@ public:
         label_4->setText(QCoreApplication::translate("LoginDialog", "Welcome to Food Villa", nullptr));
         label_5->setText(QString());
         label_6->setText(QString());
+        backgroundLabel->setText(QString());
     } // retranslateUi
 
 };
