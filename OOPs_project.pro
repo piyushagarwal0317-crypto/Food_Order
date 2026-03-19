@@ -34,4 +34,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     ../Downloads/hamburger.png \
+    .gitignore \
     menu.txt
