@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->categoryComboBox->addItem("Dessert");
 
     // 1. Load the database!
-    myMenu.loadMenuFromFile("C:/Users/babit/PiyushC/Oops Project 4th Sem/menu.txt");
+   myMenu.loadMenuFromFile(":/menu.txt");
 
     // 2. Loop through the C++ menu and put it on the visual Qt screen
     std::vector<MenuItem> items = myMenu.getItems();
