@@ -2,12 +2,20 @@
 #include "ui_logindialog.h"
 #include <QMessageBox>
 #include <QRegularExpression>
+#include <QMovie> // 1. ADDED THIS: Tells Qt how to play animations
 
 LoginDialog::LoginDialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::LoginDialog)
 {
     ui->setupUi(this);
+
+    // --- 2. ADDED THIS: The Background Animation Code ---
+    QMovie *movie = new QMovie(":/bg.gif");
+    ui->backgroundLabel->setMovie(movie);
+    movie->start();
+    // ----------------------------------------------------
+
     ui->usernameEdit->setFocus();
 }
 
@@ -48,4 +56,3 @@ void LoginDialog::on_loginButton_clicked()
     // 5. If everything is perfect, accept the login and close this dialog!
     accept();
 }
-

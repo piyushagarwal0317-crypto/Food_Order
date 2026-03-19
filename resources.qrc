@@ -4,5 +4,6 @@
         <file>hamburger.png</file>
         <file>menu.txt</file>
         <file>animation.qml</file>
+        <file>bg.gif</file>
     </qresource>
 </RCC>
