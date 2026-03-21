@@ -90,27 +90,101 @@ public:
         centralwidget->setObjectName("centralwidget");
         lineEdit = new QLineEdit(centralwidget);
         lineEdit->setObjectName("lineEdit");
-        lineEdit->setGeometry(QRect(40, 60, 113, 26));
+        lineEdit->setGeometry(QRect(20, 100, 161, 31));
+        lineEdit->setStyleSheet(QString::fromUtf8("/* --- SEARCH BAR STYLING --- */\n"
+"\n"
+"/* 1. The Search Text Box */\n"
+"QLineEdit {\n"
+"    background-color: #F8F9FA;\n"
+"    border: 2px solid #E0E0E0;\n"
+"    border-radius: 15px; /* Gives it a nice round pill shape! */\n"
+"    padding: 6px 15px;\n"
+"    color: #1A1A1D;\n"
+"    font-size: 14px;\n"
+"}\n"
+"\n"
+"/* Make the border glow Coral when the user clicks to type! */\n"
+"QLineEdit:focus {\n"
+"    border: 2px solid #FF7E5F; \n"
+"}\n"
+"\n"
+"/* 2. The Search Button */\n"
+"/* (Covering both QPushButton and QToolButton just in case!) */\n"
+"QPushButton#searchButton, QToolButton {\n"
+"    background-color: #1A1A1D; /* A sleek dark gray to contrast with your Coral buttons */\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 15px; /* Match the roundness of the search box */\n"
+"    padding: 6px 15px;\n"
+"    font-weight: bold;\n"
+"    font-size: 14px;\n"
+"}\n"
+"\n"
+"QPushButton#searchButton:hover, QToolButton:hover {\n"
+"    background-color: #4A4A4D; /* Lighter gray when hovered */\n"
+"}"));
         categoryComboBox = new QComboBox(centralwidget);
         categoryComboBox->setObjectName("categoryComboBox");
-        categoryComboBox->setGeometry(QRect(180, 60, 151, 26));
+        categoryComboBox->setGeometry(QRect(190, 100, 131, 31));
+        categoryComboBox->setStyleSheet(QString::fromUtf8("/* Style the Drop-Down Menu so it isn't invisible! */\n"
+"QComboBox {\n"
+"    background-color: #F8F9FA;\n"
+"    border: 1px solid #E0E0E0;\n"
+"    border-radius: 6px;\n"
+"    padding: 5px 10px;\n"
+"    color: #1A1A1D;\n"
+"    font-size: 14px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QComboBox::drop-down {\n"
+"    border: none;\n"
+"    width: 30px;\n"
+"}"));
         specialsLabel = new QLabel(centralwidget);
         specialsLabel->setObjectName("specialsLabel");
-        specialsLabel->setGeometry(QRect(60, 20, 661, 20));
+        specialsLabel->setGeometry(QRect(240, 10, 291, 51));
         QFont font;
         font.setFamilies({QString::fromUtf8("Monospac821 BT")});
-        font.setBold(true);
+        font.setWeight(QFont::Black);
         specialsLabel->setFont(font);
+        specialsLabel->setStyleSheet(QString::fromUtf8("/* --- SLIDING WINDOW / MARQUEE DISPLAY --- */\n"
+"/* (Change 'scrollingLabel' to whatever your label's exact objectName is!) */\n"
+"QLabel#specialsLabel {\n"
+"    background-color: #1A1A1D;       /* A sleek, very dark gray/black background */\n"
+"    color: #FF7E5F;                  /* Your signature Coral color for the text */\n"
+"    border: 3px solid #E0E0E0;       /* A thick, modern border to frame it */\n"
+"    border-radius: 12px;             /* Nice, heavily rounded corners */\n"
+"    padding: 10px;                   /* Breathing room inside the box */\n"
+"    font-weight: 900;                /* Extra bold text */\n"
+"    font-size: 24px;                 /* Much larger text! */\n"
+"}"));
         specialsLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
         addToCartButton = new QPushButton(centralwidget);
         addToCartButton->setObjectName("addToCartButton");
-        addToCartButton->setGeometry(QRect(40, 480, 256, 29));
+        addToCartButton->setGeometry(QRect(40, 480, 251, 41));
         QFont font1;
         font1.setBold(true);
         addToCartButton->setFont(font1);
+        addToCartButton->setStyleSheet(QString::fromUtf8("/* --- ADD TO CART BUTTON --- */\n"
+"/* Using the exact object name so it ONLY affects this specific button */\n"
+"QPushButton#addToCartButton {\n"
+"    background-color: #FFFFFF;       /* Pure white background */\n"
+"    color: #28A745;                  /* Crisp, modern green text */\n"
+"    border: 2px solid #28A745;       /* Matching green border */\n"
+"    border-radius: 6px;              /* Keeps the modern rounded corners */\n"
+"    padding: 8px 15px;\n"
+"    font-weight: bold;\n"
+"    font-size: 14px;\n"
+"}\n"
+"\n"
+"/* Make it invert beautifully when the user hovers their mouse over it! */\n"
+"QPushButton#addToCartButton:hover {\n"
+"    background-color: #28A745;       /* Fills in green */\n"
+"    color: #FFFFFF;                  /* Text turns white */\n"
+"}"));
         totalLabel = new QLabel(centralwidget);
         totalLabel->setObjectName("totalLabel");
-        totalLabel->setGeometry(QRect(540, 100, 161, 31));
+        totalLabel->setGeometry(QRect(550, 90, 161, 31));
         QFont font2;
         font2.setFamilies({QString::fromUtf8("Segoe Fluent Icons")});
         font2.setBold(true);
@@ -119,6 +193,21 @@ public:
         checkoutButton->setObjectName("checkoutButton");
         checkoutButton->setGeometry(QRect(480, 480, 131, 31));
         checkoutButton->setFont(font1);
+        checkoutButton->setStyleSheet(QString::fromUtf8("/* --- CHECKOUT BUTTON --- */\n"
+"QPushButton#checkoutButton {\n"
+"    background-color: #28A745;       /* Solid green background */\n"
+"    color: #FFFFFF;                  /* Pure white text */\n"
+"    border: none;                    /* No border needed for a solid button */\n"
+"    border-radius: 6px;              /* Smooth corners */\n"
+"    padding: 8px 15px;\n"
+"    font-weight: bold;\n"
+"    font-size: 14px;\n"
+"}\n"
+"\n"
+"/* Make it darken slightly when the user hovers over it */\n"
+"QPushButton#checkoutButton:hover {\n"
+"    background-color: #218838;       /* A slightly deeper, richer green */\n"
+"}"));
         cartListWidget = new QListWidget(centralwidget);
         cartListWidget->setObjectName("cartListWidget");
         cartListWidget->setGeometry(QRect(480, 140, 271, 331));
@@ -127,7 +216,7 @@ public:
         menuListWidget->setGeometry(QRect(41, 138, 251, 331));
         label = new QLabel(centralwidget);
         label->setObjectName("label");
-        label->setGeometry(QRect(110, 90, 111, 41));
+        label->setGeometry(QRect(130, 40, 61, 41));
         label->setFont(font1);
         removeButton = new QPushButton(centralwidget);
         removeButton->setObjectName("removeButton");
@@ -151,7 +240,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         lineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Search Menu", nullptr));
-        specialsLabel->setText(QCoreApplication::translate("MainWindow", "                                   TextLabel", nullptr));
+        specialsLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         addToCartButton->setText(QCoreApplication::translate("MainWindow", "Add to Cart", nullptr));
         totalLabel->setText(QCoreApplication::translate("MainWindow", "Your Cart", nullptr));
         checkoutButton->setText(QCoreApplication::translate("MainWindow", "Checkout", nullptr));

@@ -3,6 +3,16 @@
 #include <QString> // Qt's version of std::string
 #include <cstdlib>
 #include <ctime>
+#include <QCoreApplication>
+#include <QDesktopServices>
+#include <QUrl>
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QTextEdit>
+#include <QPushButton>
+#include <QFont>
+#include <QFile>
+#include <QTextStream>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -90,16 +100,59 @@ void MainWindow::on_addToCartButton_clicked()
 
 void MainWindow::on_checkoutButton_clicked()
 {
-    // 1. Save the receipt to a file (You built this backend function earlier!)
-    // Make sure to use the absolute path with double backslashes just like the menu.txt!
-  myOrder.saveReceiptToFile("C:/Users/babit/PiyushC/Oops Project 4th Sem/receipt.txt");
-    // 2. Clear the C++ backend cart
+    // 1. Find the path and save the receipt in the background
+    QString receiptPath = QCoreApplication::applicationDirPath() + "/receipt.txt";
+    myOrder.saveReceiptToFile(receiptPath.toStdString());
+
+    // 2. Read the newly saved text file back into Qt
+    QString receiptContent;
+    QFile file(receiptPath);
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&file);
+        receiptContent = in.readAll();
+        file.close();
+    }
+
+    // 3. CREATE THE CUSTOM RECEIPT POP-UP!
+    QDialog receiptDialog(this);
+    receiptDialog.setWindowTitle("Order Complete");
+    receiptDialog.resize(340, 600); // Tall and narrow, just like a physical bill!
+    receiptDialog.setStyleSheet("background-color: white;"); // Pure white paper
+
+    // Set up a vertical layout manager
+    QVBoxLayout layout(&receiptDialog);
+
+    // Create the text viewer for the receipt
+    QTextEdit receiptText(&receiptDialog);
+    receiptText.setReadOnly(true); // So the user can't accidentally type on their bill
+    receiptText.setText(receiptContent);
+
+    // CRITICAL FIX: We MUST use a Monospace font.
+    // If we don't, standard fonts will make our beautifully aligned columns jagged!
+    QFont monoFont("Courier");
+    monoFont.setStyleHint(QFont::Monospace);
+    monoFont.setPointSize(10);
+    receiptText.setFont(monoFont);
+
+    // Style the text box (black text, transparent/white background, no ugly borders)
+    receiptText.setStyleSheet("color: black; background-color: transparent; border: none;");
+
+    layout.addWidget(&receiptText);
+
+    // Add a stylish "Close" button at the bottom
+    QPushButton closeButton("Close", &receiptDialog);
+    closeButton.setStyleSheet("background-color: #FF7E5F; color: white; font-weight: bold; padding: 10px; border-radius: 5px;");
+    layout.addWidget(&closeButton);
+
+    // Tell the button to close the pop-up when clicked
+    connect(&closeButton, &QPushButton::clicked, &receiptDialog, &QDialog::accept);
+
+    // 4. Show the pop-up to the user! (The app pauses here until they click Close)
+    receiptDialog.exec();
+
+    // 5. Clean up the cart ONLY AFTER they finish looking at their receipt
     myOrder.clearCart();
-
-    // 3. Clear the visual Qt cart
     ui->cartListWidget->clear();
-
-    // 4. Reset the visual Total label
     ui->totalLabel->setText("Total: $0.00");
 }
 

@@ -60,11 +60,45 @@ QLabel {
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>60</y>
-      <width>113</width>
-      <height>26</height>
+      <x>20</x>
+      <y>100</y>
+      <width>161</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">/* --- SEARCH BAR STYLING --- */
+
+/* 1. The Search Text Box */
+QLineEdit {
+    background-color: #F8F9FA;
+    border: 2px solid #E0E0E0;
+    border-radius: 15px; /* Gives it a nice round pill shape! */
+    padding: 6px 15px;
+    color: #1A1A1D;
+    font-size: 14px;
+}
+
+/* Make the border glow Coral when the user clicks to type! */
+QLineEdit:focus {
+    border: 2px solid #FF7E5F; 
+}
+
+/* 2. The Search Button */
+/* (Covering both QPushButton and QToolButton just in case!) */
+QPushButton#searchButton, QToolButton {
+    background-color: #1A1A1D; /* A sleek dark gray to contrast with your Coral buttons */
+    color: white;
+    border: none;
+    border-radius: 15px; /* Match the roundness of the search box */
+    padding: 6px 15px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+QPushButton#searchButton:hover, QToolButton:hover {
+    background-color: #4A4A4D; /* Lighter gray when hovered */
+}</string>
     </property>
     <property name="placeholderText">
      <string>Search Menu</string>
@@ -73,31 +107,60 @@ QLabel {
    <widget class="QComboBox" name="categoryComboBox">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>60</y>
-      <width>151</width>
-      <height>26</height>
+      <x>190</x>
+      <y>100</y>
+      <width>131</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">/* Style the Drop-Down Menu so it isn't invisible! */
+QComboBox {
+    background-color: #F8F9FA;
+    border: 1px solid #E0E0E0;
+    border-radius: 6px;
+    padding: 5px 10px;
+    color: #1A1A1D;
+    font-size: 14px;
+    font-weight: bold;
+}
+QComboBox::drop-down {
+    border: none;
+    width: 30px;
+}</string>
     </property>
    </widget>
    <widget class="QLabel" name="specialsLabel">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>20</y>
-      <width>661</width>
-      <height>20</height>
+      <x>240</x>
+      <y>10</y>
+      <width>291</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Monospac821 BT</family>
       <pointsize>-1</pointsize>
-      <bold>true</bold>
+      <fontweight>Black</fontweight>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">/* --- SLIDING WINDOW / MARQUEE DISPLAY --- */
+/* (Change 'scrollingLabel' to whatever your label's exact objectName is!) */
+QLabel#specialsLabel {
+    background-color: #1A1A1D;       /* A sleek, very dark gray/black background */
+    color: #FF7E5F;                  /* Your signature Coral color for the text */
+    border: 3px solid #E0E0E0;       /* A thick, modern border to frame it */
+    border-radius: 12px;             /* Nice, heavily rounded corners */
+    padding: 10px;                   /* Breathing room inside the box */
+    font-weight: 900;                /* Extra bold text */
+    font-size: 24px;                 /* Much larger text! */
+}</string>
+    </property>
     <property name="text">
-     <string>                                   TextLabel</string>
+     <string>TextLabel</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -106,10 +169,10 @@ QLabel {
    <widget class="QPushButton" name="addToCartButton">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>70</x>
       <y>480</y>
-      <width>256</width>
-      <height>29</height>
+      <width>211</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -118,6 +181,25 @@ QLabel {
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">/* --- ADD TO CART BUTTON --- */
+/* Using the exact object name so it ONLY affects this specific button */
+QPushButton#addToCartButton {
+    background-color: #FFFFFF;       /* Pure white background */
+    color: #28A745;                  /* Crisp, modern green text */
+    border: 2px solid #28A745;       /* Matching green border */
+    border-radius: 6px;              /* Keeps the modern rounded corners */
+    padding: 8px 15px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Make it invert beautifully when the user hovers their mouse over it! */
+QPushButton#addToCartButton:hover {
+    background-color: #28A745;       /* Fills in green */
+    color: #FFFFFF;                  /* Text turns white */
+}</string>
+    </property>
     <property name="text">
      <string>Add to Cart</string>
     </property>
@@ -125,8 +207,8 @@ QLabel {
    <widget class="QLabel" name="totalLabel">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>100</y>
+      <x>550</x>
+      <y>90</y>
       <width>161</width>
       <height>31</height>
      </rect>
@@ -148,7 +230,7 @@ QLabel {
       <x>480</x>
       <y>480</y>
       <width>131</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -156,6 +238,23 @@ QLabel {
       <pointsize>-1</pointsize>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">/* --- CHECKOUT BUTTON --- */
+QPushButton#checkoutButton {
+    background-color: #28A745;       /* Solid green background */
+    color: #FFFFFF;                  /* Pure white text */
+    border: none;                    /* No border needed for a solid button */
+    border-radius: 6px;              /* Smooth corners */
+    padding: 8px 15px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Make it darken slightly when the user hovers over it */
+QPushButton#checkoutButton:hover {
+    background-color: #218838;       /* A slightly deeper, richer green */
+}</string>
     </property>
     <property name="text">
      <string>Checkout</string>
@@ -176,7 +275,7 @@ QLabel {
      <rect>
       <x>41</x>
       <y>138</y>
-      <width>251</width>
+      <width>281</width>
       <height>331</height>
      </rect>
     </property>
@@ -184,9 +283,9 @@ QLabel {
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>90</y>
-      <width>111</width>
+      <x>130</x>
+      <y>40</y>
+      <width>61</width>
       <height>41</height>
      </rect>
     </property>
@@ -206,7 +305,7 @@ QLabel {
       <x>630</x>
       <y>480</y>
       <width>121</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
