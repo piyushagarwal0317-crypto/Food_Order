@@ -29,6 +29,8 @@ private slots:
 
     void updateScrollingText();
 
+    void on_removeButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 

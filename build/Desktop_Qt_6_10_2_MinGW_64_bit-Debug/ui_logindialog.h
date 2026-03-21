@@ -50,9 +50,29 @@ public:
         emailPhoneEdit = new QLineEdit(LoginDialog);
         emailPhoneEdit->setObjectName("emailPhoneEdit");
         emailPhoneEdit->setGeometry(QRect(120, 170, 181, 29));
+        emailPhoneEdit->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    background-color: #1c2833;  /* Deep Midnight Blue */\n"
+"    color: #fdf2e9;             /* Soft off-white text so it isn't harsh */\n"
+"    border: 2px solid #2980b9;  /* Bright blue border */\n"
+"    border-radius: 8px;\n"
+"    padding: 5px;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"    border: 2px solid #f39c12;  /* Border turns warm orange when typing */\n"
+"}"));
         passwordEdit = new QLineEdit(LoginDialog);
         passwordEdit->setObjectName("passwordEdit");
         passwordEdit->setGeometry(QRect(120, 230, 181, 29));
+        passwordEdit->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    background-color: #1c2833;  /* Deep Midnight Blue */\n"
+"    color: #fdf2e9;             /* Soft off-white text so it isn't harsh */\n"
+"    border: 2px solid #2980b9;  /* Bright blue border */\n"
+"    border-radius: 8px;\n"
+"    padding: 5px;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"    border: 2px solid #f39c12;  /* Border turns warm orange when typing */\n"
+"}"));
         passwordEdit->setEchoMode(QLineEdit::EchoMode::Password);
         loginButton = new QPushButton(LoginDialog);
         loginButton->setObjectName("loginButton");
@@ -75,13 +95,39 @@ public:
 "}"));
         usernameEdit = new QLineEdit(LoginDialog);
         usernameEdit->setObjectName("usernameEdit");
-        usernameEdit->setGeometry(QRect(120, 110, 181, 29));
+        usernameEdit->setGeometry(QRect(120, 110, 181, 31));
+        usernameEdit->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    background-color: #1c2833;  /* Deep Midnight Blue */\n"
+"    color: #fdf2e9;             /* Soft off-white text so it isn't harsh */\n"
+"    border: 2px solid #2980b9;  /* Bright blue border */\n"
+"    border-radius: 8px;QLineEdit {\n"
+"    background-color: #1c2833;  /* Your midnight navy color */\n"
+"    color: #fdf2e9;\n"
+"    border: 2px solid #2980b9;\n"
+"    border-radius: 8px;\n"
+"    \n"
+"    /* FIX: Reduce left and right padding to 2px to stop cutting off text */\n"
+"    padding-left: 2px;\n"
+"    padding-right: 2px;\n"
+"    padding-top: 5px;\n"
+"    padding-bottom: 5px;\n"
+"}\n"
+"\n"
+"QLineEdit:focus {\n"
+"    border: 2px solid #f39c12;\n"
+"}\n"
+"    padding: 5px;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"    border: 2px solid #f39c12;  /* Border turns warm orange when typing */\n"
+"}"));
         label_4 = new QLabel(LoginDialog);
         label_4->setObjectName("label_4");
-        label_4->setGeometry(QRect(90, 20, 211, 71));
+        label_4->setGeometry(QRect(70, 20, 211, 71));
         QFont font;
         font.setBold(true);
         label_4->setFont(font);
+        label_4->setAlignment(Qt::AlignmentFlag::AlignCenter);
         label_5 = new QLabel(LoginDialog);
         label_5->setObjectName("label_5");
         label_5->setGeometry(QRect(10, 10, 63, 61));

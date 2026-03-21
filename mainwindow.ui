@@ -13,6 +13,49 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">/* 1. Make the main background pure white */
+QWidget#centralwidget {
+    background-color: #FFFFFF;
+}
+
+/* 2. Style the Menu and Cart lists */
+QListWidget {
+    background-color: #F8F9FA;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    color: #1A1A1D;
+    font-size: 14px;
+    padding: 5px;
+}
+
+QListWidget::item:selected {
+    background-color: #FEB47B;
+    color: white;
+}
+
+/* 3. Style the Buttons */
+QPushButton {
+    background-color: #FF7E5F;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 15px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+QPushButton:hover {
+    background-color: #E23E57;
+}
+
+/* 4. Style the text labels */
+QLabel {
+    color: #1A1A1D;
+    font-weight: bold;
+    font-size: 16px;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
@@ -49,6 +92,7 @@
     <property name="font">
      <font>
       <family>Monospac821 BT</family>
+      <pointsize>-1</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -70,6 +114,7 @@
     </property>
     <property name="font">
      <font>
+      <pointsize>-1</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -89,7 +134,8 @@
     <property name="font">
      <font>
       <family>Segoe Fluent Icons</family>
-      <pointsize>20</pointsize>
+      <pointsize>-1</pointsize>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -101,12 +147,13 @@
      <rect>
       <x>480</x>
       <y>480</y>
-      <width>271</width>
-      <height>29</height>
+      <width>131</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <pointsize>-1</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -145,11 +192,28 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>-1</pointsize>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
      <string>Menu</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="removeButton">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>480</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #E23E57; color: white; border-radius: 5px; padding: 5px;</string>
+    </property>
+    <property name="text">
+     <string>Remove_Item</string>
     </property>
    </widget>
   </widget>
@@ -159,7 +223,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

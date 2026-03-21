@@ -173,3 +173,26 @@ void MainWindow::updateScrollingText() {
     // Update the label on the screen with the newly shifted text
     ui->specialsLabel->setText(scrollingText);
 }
+
+    void MainWindow::on_removeButton_clicked()
+    {
+        // 1. Find out exactly which row the user highlighted in the visual list
+        int currentRow = ui->cartListWidget->currentRow();
+
+        // 2. Failsafe: If they click the button WITHOUT selecting an item, currentRow is -1.
+        // We only want to run the deletion code if they actually selected something (>= 0).
+        if (currentRow >= 0) {
+
+            // 3. Delete it from your C++ backend vector
+            myOrder.removeOrderItem(currentRow);
+
+            // 4. Delete it from the visual Qt list on the screen
+            delete ui->cartListWidget->takeItem(currentRow);
+
+            // 5. Recalculate the math and update the visual Total Label!
+            // (Using QString::number to force exactly 2 decimal places)
+            ui->totalLabel->setText("Total: $" + QString::number(myOrder.calculateTotal(), 'f', 2));
+        }
+
+    }
+

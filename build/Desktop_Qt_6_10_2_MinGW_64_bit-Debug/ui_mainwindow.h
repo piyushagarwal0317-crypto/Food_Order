@@ -36,6 +36,7 @@ public:
     QListWidget *cartListWidget;
     QListWidget *menuListWidget;
     QLabel *label;
+    QPushButton *removeButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -44,6 +45,47 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
         MainWindow->resize(800, 600);
+        MainWindow->setStyleSheet(QString::fromUtf8("/* 1. Make the main background pure white */\n"
+"QWidget#centralwidget {\n"
+"    background-color: #FFFFFF;\n"
+"}\n"
+"\n"
+"/* 2. Style the Menu and Cart lists */\n"
+"QListWidget {\n"
+"    background-color: #F8F9FA;\n"
+"    border: 1px solid #E0E0E0;\n"
+"    border-radius: 8px;\n"
+"    color: #1A1A1D;\n"
+"    font-size: 14px;\n"
+"    padding: 5px;\n"
+"}\n"
+"\n"
+"QListWidget::item:selected {\n"
+"    background-color: #FEB47B;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"/* 3. Style the Buttons */\n"
+"QPushButton {\n"
+"    background-color: #FF7E5F;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 6px;\n"
+"    padding: 8px 15px;\n"
+"    font-weight: bold;\n"
+"    font-size: 14px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #E23E57;\n"
+"}\n"
+"\n"
+"/* 4. Style the text labels */\n"
+"QLabel {\n"
+"    color: #1A1A1D;\n"
+"    font-weight: bold;\n"
+"    font-size: 16px;\n"
+"}"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         lineEdit = new QLineEdit(centralwidget);
@@ -71,11 +113,11 @@ public:
         totalLabel->setGeometry(QRect(540, 100, 161, 31));
         QFont font2;
         font2.setFamilies({QString::fromUtf8("Segoe Fluent Icons")});
-        font2.setPointSize(20);
+        font2.setBold(true);
         totalLabel->setFont(font2);
         checkoutButton = new QPushButton(centralwidget);
         checkoutButton->setObjectName("checkoutButton");
-        checkoutButton->setGeometry(QRect(480, 480, 271, 29));
+        checkoutButton->setGeometry(QRect(480, 480, 131, 31));
         checkoutButton->setFont(font1);
         cartListWidget = new QListWidget(centralwidget);
         cartListWidget->setObjectName("cartListWidget");
@@ -86,13 +128,15 @@ public:
         label = new QLabel(centralwidget);
         label->setObjectName("label");
         label->setGeometry(QRect(110, 90, 111, 41));
-        QFont font3;
-        font3.setPointSize(20);
-        label->setFont(font3);
+        label->setFont(font1);
+        removeButton = new QPushButton(centralwidget);
+        removeButton->setObjectName("removeButton");
+        removeButton->setGeometry(QRect(630, 480, 121, 31));
+        removeButton->setStyleSheet(QString::fromUtf8("background-color: #E23E57; color: white; border-radius: 5px; padding: 5px;"));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 26));
+        menubar->setGeometry(QRect(0, 0, 800, 25));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -112,6 +156,7 @@ public:
         totalLabel->setText(QCoreApplication::translate("MainWindow", "Your Cart", nullptr));
         checkoutButton->setText(QCoreApplication::translate("MainWindow", "Checkout", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Menu", nullptr));
+        removeButton->setText(QCoreApplication::translate("MainWindow", "Remove_Item", nullptr));
     } // retranslateUi
 
 };

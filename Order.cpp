@@ -52,3 +52,11 @@ void Order::saveReceiptToFile(const std::string& filename) const {
     file.close();
     std::cout << "Receipt saved to " << filename << "\n";
 }
+
+void Order::removeOrderItem(int index) {
+    // Failsafe: Make sure the index actually exists in the cart before trying to delete it!
+    if (index >= 0 && index < cart.size()) {
+        // .erase() is the standard C++ way to remove an item from a vector
+        cart.erase(cart.begin() + index);
+    }
+}

@@ -18,4 +18,5 @@ public:
     void displayCart() const;
     double calculateTotal() const;
     void clearCart();
+    void removeOrderItem(int index);
 };
