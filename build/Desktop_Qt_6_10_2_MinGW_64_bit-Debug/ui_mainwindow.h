@@ -161,7 +161,7 @@ public:
         specialsLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
         addToCartButton = new QPushButton(centralwidget);
         addToCartButton->setObjectName("addToCartButton");
-        addToCartButton->setGeometry(QRect(40, 480, 251, 41));
+        addToCartButton->setGeometry(QRect(70, 480, 211, 41));
         QFont font1;
         font1.setBold(true);
         addToCartButton->setFont(font1);
@@ -191,7 +191,7 @@ public:
         totalLabel->setFont(font2);
         checkoutButton = new QPushButton(centralwidget);
         checkoutButton->setObjectName("checkoutButton");
-        checkoutButton->setGeometry(QRect(480, 480, 131, 31));
+        checkoutButton->setGeometry(QRect(480, 480, 131, 41));
         checkoutButton->setFont(font1);
         checkoutButton->setStyleSheet(QString::fromUtf8("/* --- CHECKOUT BUTTON --- */\n"
 "QPushButton#checkoutButton {\n"
@@ -213,14 +213,14 @@ public:
         cartListWidget->setGeometry(QRect(480, 140, 271, 331));
         menuListWidget = new QListWidget(centralwidget);
         menuListWidget->setObjectName("menuListWidget");
-        menuListWidget->setGeometry(QRect(41, 138, 251, 331));
+        menuListWidget->setGeometry(QRect(41, 138, 281, 331));
         label = new QLabel(centralwidget);
         label->setObjectName("label");
         label->setGeometry(QRect(130, 40, 61, 41));
         label->setFont(font1);
         removeButton = new QPushButton(centralwidget);
         removeButton->setObjectName("removeButton");
-        removeButton->setGeometry(QRect(630, 480, 121, 31));
+        removeButton->setGeometry(QRect(630, 480, 121, 41));
         removeButton->setStyleSheet(QString::fromUtf8("background-color: #E23E57; color: white; border-radius: 5px; padding: 5px;"));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
