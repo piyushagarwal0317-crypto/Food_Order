@@ -32,6 +32,7 @@ public:
     QLabel *label_5;
     QLabel *label_6;
     QLabel *backgroundLabel;
+    QPushButton *registerButton;
 
     void setupUi(QDialog *LoginDialog)
     {
@@ -76,7 +77,7 @@ public:
         passwordEdit->setEchoMode(QLineEdit::EchoMode::Password);
         loginButton = new QPushButton(LoginDialog);
         loginButton->setObjectName("loginButton");
-        loginButton->setGeometry(QRect(110, 290, 111, 41));
+        loginButton->setGeometry(QRect(210, 290, 111, 41));
         loginButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #E0E0E0; /* A nice, light faded gray */\n"
 "    color: #333333; /* Dark gray text so it's easy to read */\n"
@@ -141,6 +142,9 @@ public:
         backgroundLabel = new QLabel(LoginDialog);
         backgroundLabel->setObjectName("backgroundLabel");
         backgroundLabel->setGeometry(QRect(-10, -10, 471, 381));
+        registerButton = new QPushButton(LoginDialog);
+        registerButton->setObjectName("registerButton");
+        registerButton->setGeometry(QRect(70, 290, 91, 41));
         backgroundLabel->raise();
         label->raise();
         label_2->raise();
@@ -152,6 +156,7 @@ public:
         label_4->raise();
         label_5->raise();
         label_6->raise();
+        registerButton->raise();
 
         retranslateUi(LoginDialog);
 
@@ -171,6 +176,7 @@ public:
         label_5->setText(QString());
         label_6->setText(QString());
         backgroundLabel->setText(QString());
+        registerButton->setText(QCoreApplication::translate("LoginDialog", "Register", nullptr));
     } // retranslateUi
 
 };

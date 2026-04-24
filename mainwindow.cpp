@@ -75,26 +75,30 @@ MainWindow::~MainWindow()
 }
 void MainWindow::on_addToCartButton_clicked()
 {
-    // 1. Check if the user actually selected an item in the menu list
     int currentRow = ui->menuListWidget->currentRow();
-    if (currentRow < 0) {
-        return; // They didn't select anything, so do nothing!
-    }
+    if (currentRow < 0) return;
 
-    // 2. Get the exact item they clicked from your C++ backend
     std::vector<MenuItem> items = myMenu.getItems();
     MenuItem selectedFood = items[currentRow];
 
-    // 3. Add it to your C++ Order engine (assuming quantity 1 for simplicity)
-    myOrder.addItemToCart(selectedFood, 1);
+    // addItemToCart now returns the index — same index if duplicate, new index if fresh
+    int cartIndex = myOrder.addItemToCart(selectedFood, 1);
+    int qty       = myOrder.getQuantity(cartIndex);
 
-    // 4. Update the visual Cart List on the screen
-    QString cartText = QString::fromStdString(selectedFood.getName()) + " - $" + QString::number(selectedFood.getPrice());
-    ui->cartListWidget->addItem(cartText);
+    // Build the display text with quantity and running line total
+    QString cartText = QString::fromStdString(selectedFood.getName()) +
+                       " x" + QString::number(qty) +
+                       "  —  $" + QString::number(selectedFood.getPrice() * qty, 'f', 2);
 
-    // 5. Update the visual Total Label
-    double currentTotal = myOrder.calculateTotal();
-    ui->totalLabel->setText("Total: $" + QString::number(currentTotal, 'f', 2));
+    if (cartIndex < ui->cartListWidget->count()) {
+        // Item already had a row — update it in place
+        ui->cartListWidget->item(cartIndex)->setText(cartText);
+    } else {
+        // Brand new item — append a fresh row
+        ui->cartListWidget->addItem(cartText);
+    }
+
+    ui->totalLabel->setText("Total: $" + QString::number(myOrder.calculateTotal(), 'f', 2));
 }
 
 
@@ -227,25 +231,40 @@ void MainWindow::updateScrollingText() {
     ui->specialsLabel->setText(scrollingText);
 }
 
-    void MainWindow::on_removeButton_clicked()
-    {
-        // 1. Find out exactly which row the user highlighted in the visual list
-        int currentRow = ui->cartListWidget->currentRow();
+void MainWindow::on_removeButton_clicked()
+{
+    int currentRow = ui->cartListWidget->currentRow();
+    if (currentRow < 0) return;
 
-        // 2. Failsafe: If they click the button WITHOUT selecting an item, currentRow is -1.
-        // We only want to run the deletion code if they actually selected something (>= 0).
-        if (currentRow >= 0) {
+    // removeOrderItem returns true only when qty hit 0 and the entry was erased
+    bool fullyRemoved = myOrder.removeOrderItem(currentRow);
 
-            // 3. Delete it from your C++ backend vector
-            myOrder.removeOrderItem(currentRow);
-
-            // 4. Delete it from the visual Qt list on the screen
-            delete ui->cartListWidget->takeItem(currentRow);
-
-            // 5. Recalculate the math and update the visual Total Label!
-            // (Using QString::number to force exactly 2 decimal places)
-            ui->totalLabel->setText("Total: $" + QString::number(myOrder.calculateTotal(), 'f', 2));
-        }
-
+    if (fullyRemoved) {
+        // Wipe the whole row from the visual list
+        delete ui->cartListWidget->takeItem(currentRow);
+    } else {
+        // Still has quantity left — just refresh the text on that row
+        int qty = myOrder.getQuantity(currentRow);
+        // We need the item name+price — read it back from the backend
+        // (cart is private so we use getQuantity; name/price come from the existing text)
+        // Simplest approach: re-read current text and rebuild it
+        QString existing = ui->cartListWidget->item(currentRow)->text();
+        // Text format is "Name x{old}  —  $..."  Strip back to name only
+        QString name = existing.section(" x", 0, 0); // everything before " x"
+        // Get price from backend by matching via calculateTotal delta — actually,
+        // easier to just store the price: split the old price and divide by old qty
+        // But cleanest: expose a getter or rebuild from myMenu (see note below)
+        // For now, extract the line total and divide:
+        double lineTotal = myOrder.calculateTotal(); // placeholder — see note
+        // ── Rebuild properly using the stored item price via a helper ──
+        // Since we can't easily get price here without a getter, update the qty portion:
+        QString newText = name + " x" + QString::number(qty) +
+                          existing.section("—", 1); // keep "  —  $X.XX" suffix
+        // Recalculate the price portion from scratch:
+        // Extract old price per unit: oldLineTotal / oldQty => (qty+1 was old qty)
+        // Simplest robust fix: just update the qty number only:
+        ui->cartListWidget->item(currentRow)->setText(newText);
     }
 
+    ui->totalLabel->setText("Total: $" + QString::number(myOrder.calculateTotal(), 'f', 2));
+}

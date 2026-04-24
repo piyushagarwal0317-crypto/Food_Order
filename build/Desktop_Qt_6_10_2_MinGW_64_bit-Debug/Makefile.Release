@@ -930,8 +930,6 @@ release/logindialog.o: ../../logindialog.cpp ../../logindialog.h \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/QMessageBox \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/qmessagebox.h \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
-		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/QRegularExpression \
-		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qregularexpression.h \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtGui/QMovie \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtGui/qmovie.h \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtGui/qimagereader.h \
@@ -944,11 +942,26 @@ release/logindialog.o: ../../logindialog.cpp ../../logindialog.h \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qcborcommon.h \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qdatetime.h \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qcalendar.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qregularexpression.h \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/quuid.h \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qjsondocument.h \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qjsonparseerror.h \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/q20algorithm.h \
-		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qfactoryinterface.h
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qfactoryinterface.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/QFile \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qfile.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qfiledevice.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/QTextStream \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/QDate \
+		../../mainwindow.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/QMainWindow \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/qmainwindow.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/qtabwidget.h \
+		../../Menu.h \
+		../../MenuItem.h \
+		../../Order.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/QTimer \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qtimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\logindialog.o ..\..\logindialog.cpp
 
 release/main.o: ../../main.cpp ../../mainwindow.h \
@@ -1417,7 +1430,35 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/QTimer \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qtimer.h \
 		ui_mainwindow.h \
-		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/QString
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/QString \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/QCoreApplication \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtGui/QDesktopServices \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtGui/qdesktopservices.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/QUrl \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/QDialog \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/qdialog.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/QVBoxLayout \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/qboxlayout.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/qlayout.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/qlayoutitem.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/qgridlayout.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/QTextEdit \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/qtextedit.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/qframe.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtGui/qtextdocument.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtGui/qtextoption.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtGui/qtextcursor.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtGui/qtextformat.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtGui/qpen.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/QPushButton \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/qpushbutton.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtWidgets/qabstractbutton.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtGui/QFont \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/QFile \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qfile.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qfiledevice.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/QTextStream
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\..\mainwindow.cpp
 
 release/muku.o: ../../muku.cpp ../../muku.h

@@ -4,19 +4,18 @@
 
 class Order {
 private:
-    // Helper structure to bundle an item with its quantity
     struct OrderItem {
         MenuItem item;
         int quantity;
     };
-    
     std::vector<OrderItem> cart;
 
 public:
-    void addItemToCart(const MenuItem& item, int quantity);
+    int  addItemToCart(const MenuItem& item, int quantity); // now returns cart index
+    int  getQuantity(int index) const;                      // new: lets UI read qty
+    bool removeOrderItem(int index);                        // now returns true if fully removed
     void saveReceiptToFile(const std::string& filename) const;
     void displayCart() const;
     double calculateTotal() const;
     void clearCart();
-    void removeOrderItem(int index);
 };

@@ -105,7 +105,7 @@ QLineEdit:focus {
   <widget class="QPushButton" name="loginButton">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>210</x>
      <y>290</y>
      <width>111</width>
      <height>41</height>
@@ -245,6 +245,19 @@ QLineEdit:focus {
     <string/>
    </property>
   </widget>
+  <widget class="QPushButton" name="registerButton">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>290</y>
+     <width>91</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Register</string>
+   </property>
+  </widget>
   <zorder>backgroundLabel</zorder>
   <zorder>label</zorder>
   <zorder>label_2</zorder>
@@ -256,6 +269,7 @@ QLineEdit:focus {
   <zorder>label_4</zorder>
   <zorder>label_5</zorder>
   <zorder>label_6</zorder>
+  <zorder>registerButton</zorder>
  </widget>
  <resources>
   <include location="resources.qrc"/>
