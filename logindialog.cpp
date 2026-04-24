@@ -10,7 +10,11 @@
 // ─── CSV Column Layout ───────────────────────────────────────────
 // email , username , password , registered_date
 // ────────────────────────────────────────────────────────────────
-static const QString CSV_FILE = "users.csv";
+#include <QStandardPaths>
+#include <QDir>
+
+static const QString CSV_FILE = QStandardPaths::writableLocation(
+                                    QStandardPaths::AppDataLocation) + "/users.csv";
 static const QString CSV_HEADER = "email,username,password,registered_date";
 
 // Helper: reads CSV and returns all rows as list-of-lists (skips header)
@@ -36,6 +40,12 @@ static QList<QStringList> readCSV()
 // Helper: ensure the CSV file exists with a header row
 static void ensureCSVExists()
 {
+    // Create the folder first if it doesn't exist
+    QDir dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
+    if (!dir.exists()) {
+        dir.mkpath(".");  // creates all missing parent folders too
+    }
+
     QFile file(CSV_FILE);
     if (!file.exists()) {
         if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -45,7 +55,6 @@ static void ensureCSVExists()
         }
     }
 }
-
 // ─────────────────────────────────────────────────────────────────
 
 LoginDialog::LoginDialog(QWidget *parent)

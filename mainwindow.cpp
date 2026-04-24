@@ -104,11 +104,11 @@ void MainWindow::on_addToCartButton_clicked()
 
 void MainWindow::on_checkoutButton_clicked()
 {
-    // 1. Find the path and save the receipt in the background
+    // 1. Save receipt text file
     QString receiptPath = QCoreApplication::applicationDirPath() + "/receipt.txt";
     myOrder.saveReceiptToFile(receiptPath.toStdString());
 
-    // 2. Read the newly saved text file back into Qt
+    // 2. Read the receipt text back
     QString receiptContent;
     QFile file(receiptPath);
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -117,44 +117,88 @@ void MainWindow::on_checkoutButton_clicked()
         file.close();
     }
 
-    // 3. CREATE THE CUSTOM RECEIPT POP-UP!
+    // 3. Build the receipt popup
     QDialog receiptDialog(this);
-    receiptDialog.setWindowTitle("Order Complete");
-    receiptDialog.resize(340, 600); // Tall and narrow, just like a physical bill!
-    receiptDialog.setStyleSheet("background-color: white;"); // Pure white paper
+    receiptDialog.setWindowTitle("Order Complete — Food Villa");
+    receiptDialog.resize(340, 750);
+    receiptDialog.setStyleSheet("background-color: white;");
 
-    // Set up a vertical layout manager
-    QVBoxLayout layout(&receiptDialog);
+    QVBoxLayout *layout = new QVBoxLayout(&receiptDialog);
+    layout->setSpacing(0);
+    layout->setContentsMargins(0, 0, 0, 10);
 
-    // Create the text viewer for the receipt
-    QTextEdit receiptText(&receiptDialog);
-    receiptText.setReadOnly(true); // So the user can't accidentally type on their bill
-    receiptText.setText(receiptContent);
-
-    // CRITICAL FIX: We MUST use a Monospace font.
-    // If we don't, standard fonts will make our beautifully aligned columns jagged!
+    // --- Receipt text ---
+    QTextEdit *receiptText = new QTextEdit(&receiptDialog);
+    receiptText->setReadOnly(true);
+    receiptText->setText(receiptContent);
     QFont monoFont("Courier");
     monoFont.setStyleHint(QFont::Monospace);
     monoFont.setPointSize(10);
-    receiptText.setFont(monoFont);
+    receiptText->setFont(monoFont);
+    receiptText->setStyleSheet("color: black; background-color: white; border: none;");
+    receiptText->setFixedHeight(320);
+    layout->addWidget(receiptText);
 
-    // Style the text box (black text, transparent/white background, no ugly borders)
-    receiptText.setStyleSheet("color: black; background-color: transparent; border: none;");
+    // --- Divider ---
+    QLabel *divider = new QLabel("- - - - - - - - - - - - - - - - - - - -", &receiptDialog);
+    divider->setAlignment(Qt::AlignCenter);
+    divider->setStyleSheet("color: #aaa; font-size: 11px; padding: 4px 0;");
+    layout->addWidget(divider);
 
-    layout.addWidget(&receiptText);
+    // --- "Scan to Pay" label ---
+    QLabel *payLabel = new QLabel("📱  Scan & Pay via PhonePe", &receiptDialog);
+    payLabel->setAlignment(Qt::AlignCenter);
+    payLabel->setStyleSheet(
+        "color: #5f259f;"           // PhonePe purple
+        "font-weight: bold;"
+        "font-size: 13px;"
+        "padding: 8px 0 4px 0;"
+        );
+    layout->addWidget(payLabel);
 
-    // Add a stylish "Close" button at the bottom
-    QPushButton closeButton("Close", &receiptDialog);
-    closeButton.setStyleSheet("background-color: #FF7E5F; color: white; font-weight: bold; padding: 10px; border-radius: 5px;");
-    layout.addWidget(&closeButton);
+    // --- QR Code image ---
+    QLabel *qrLabel = new QLabel(&receiptDialog);
+    QPixmap qrPixmap(":/phonepe_qr.jpeg");
+    if (qrPixmap.isNull()) {
+        // Fallback if image not found
+        qrLabel->setText("[QR code not found — check resources.qrc]");
+        qrLabel->setStyleSheet("color: red; font-size: 11px;");
+    } else {
+        // Scale to fit nicely in the popup, keep aspect ratio
+        qrLabel->setPixmap(qrPixmap.scaled(200, 200, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    }
+    qrLabel->setAlignment(Qt::AlignCenter);
+    qrLabel->setStyleSheet("padding: 6px 0;");
+    layout->addWidget(qrLabel);
 
-    // Tell the button to close the pop-up when clicked
-    connect(&closeButton, &QPushButton::clicked, &receiptDialog, &QDialog::accept);
+    // --- Merchant name ---
+    QLabel *nameLabel = new QLabel("Mukund Tiwari", &receiptDialog);
+    nameLabel->setAlignment(Qt::AlignCenter);
+    nameLabel->setStyleSheet(
+        "color: #333;"
+        "font-weight: bold;"
+        "font-size: 12px;"
+        "padding-bottom: 8px;"
+        );
+    layout->addWidget(nameLabel);
 
-    // 4. Show the pop-up to the user! (The app pauses here until they click Close)
+    // --- Close button ---
+    QPushButton *closeButton = new QPushButton("Close", &receiptDialog);
+    closeButton->setStyleSheet(
+        "background-color: #5f259f;"   // PhonePe purple to match QR branding
+        "color: white;"
+        "font-weight: bold;"
+        "padding: 10px;"
+        "border-radius: 5px;"
+        "margin: 0 12px;"
+        );
+    layout->addWidget(closeButton);
+    connect(closeButton, &QPushButton::clicked, &receiptDialog, &QDialog::accept);
+
+    // 4. Show popup
     receiptDialog.exec();
 
-    // 5. Clean up the cart ONLY AFTER they finish looking at their receipt
+    // 5. Clear cart after they close
     myOrder.clearCart();
     ui->cartListWidget->clear();
     ui->totalLabel->setText("Total: $0.00");

@@ -33,6 +33,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    ../../../C:/Users/babit/Downloads/phonepe_qr.jpeg \
     ../Downloads/bg.gif \
     ../Downloads/hamburger.png \
     .gitignore \

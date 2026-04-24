@@ -70,7 +70,8 @@ OBJECTS       = debug/Menu.o \
 		debug/moc_logindialog.o \
 		debug/moc_mainwindow.o
 
-DIST          = ../Downloads/bg.gif \
+DIST          = ../../../C:/Users/babit/Downloads/phonepe_qr.jpeg \
+		../Downloads/bg.gif \
 		../Downloads/hamburger.png \
 		.gitignore \
 		menu.txt ..\..\Menu.h \
@@ -133,6 +134,7 @@ debug/qrc_resources.cpp: ../../resources.qrc \
 		../../hamburger.png \
 		../../biryani.png \
 		../../animation.qml \
+		../../phonepe_qr.jpeg \
 		../../menu.txt
 	"E:\QT(UI_Lib_C++)\6.10.2\mingw_64\bin\rcc.exe" -name resources --no-zstd ..\..\resources.qrc -o debug\qrc_resources.cpp
 
@@ -961,7 +963,14 @@ debug/logindialog.o: ../../logindialog.cpp ../../logindialog.h \
 		../../MenuItem.h \
 		../../Order.h \
 		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/QTimer \
-		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qtimer.h
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qtimer.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/QStandardPaths \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qstandardpaths.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/QDir \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qdir.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qdirlisting.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qfileinfo.h \
+		../../../../../../QT(UI_Lib_C++)/6.10.2/mingw_64/include/QtCore/qtimezone.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\logindialog.o ..\..\logindialog.cpp
 
 debug/main.o: ../../main.cpp ../../mainwindow.h \

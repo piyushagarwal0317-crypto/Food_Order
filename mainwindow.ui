@@ -14,46 +14,148 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">/* 1. Make the main background pure white */
+   <string notr="true">/* === MAIN BACKGROUND === */
 QWidget#centralwidget {
-    background-color: #FFFFFF;
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #fff8f0, stop:0.5 #fdebd0, stop:1 #fad7a0);
 }
 
-/* 2. Style the Menu and Cart lists */
+/* === MENU &amp; CART LISTS === */
 QListWidget {
-    background-color: #F8F9FA;
-    border: 1px solid #E0E0E0;
-    border-radius: 8px;
-    color: #1A1A1D;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1.5px solid #f0a500;
+    border-radius: 12px;
+    color: #5a3200;
     font-size: 14px;
-    padding: 5px;
+    padding: 6px;
 }
-
-QListWidget::item:selected {
-    background-color: #FEB47B;
-    color: white;
-}
-
-/* 3. Style the Buttons */
-QPushButton {
-    background-color: #FF7E5F;
-    color: white;
-    border: none;
+QListWidget::item {
+    padding: 6px 8px;
     border-radius: 6px;
+}
+QListWidget::item:hover {
+    background-color: rgba(240, 165, 0, 0.12);
+}
+QListWidget::item:selected {
+    background-color: rgba(240, 140, 0, 0.30);
+    color: #7a3e00;
+}
+
+/* === LABELS === */
+QLabel {
+    color: #7a3e00;
+    font-weight: bold;
+    font-size: 16px;
+    background: transparent;
+}
+
+/* === SEARCH BAR === */
+QLineEdit {
+    background-color: rgba(255, 255, 255, 0.80);
+    border: 1.5px solid #f0a500;
+    border-radius: 15px;
+    padding: 6px 15px;
+    color: #5a3200;
+    font-size: 14px;
+}
+QLineEdit:focus {
+    border: 2px solid #e07b00;
+    background-color: #ffffff;
+}
+
+/* === DROPDOWN === */
+QComboBox {
+    background-color: rgba(255, 255, 255, 0.80);
+    border: 1.5px solid #f0a500;
+    border-radius: 8px;
+    padding: 5px 10px;
+    color: #7a3e00;
+    font-size: 14px;
+    font-weight: bold;
+}
+QComboBox QAbstractItemView {
+    background-color: #fff8f0;
+    color: #5a3200;
+    selection-background-color: rgba(240, 165, 0, 0.25);
+    border: 1px solid #f0a500;
+}
+QComboBox::drop-down {
+    border: none;
+    width: 30px;
+}
+
+/* === SPECIALS TICKER === */
+QLabel#specialsLabel {
+    background-color: #5a3200;
+    color: #FFD97A;
+    border: 2px solid #f0a500;
+    border-radius: 12px;
+    padding: 10px;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+/* === ADD TO CART BUTTON === */
+QPushButton#addToCartButton {
+    background-color: white;
+    color: #28a745;
+    border: 2px solid #28a745;
+    border-radius: 8px;
     padding: 8px 15px;
     font-weight: bold;
     font-size: 14px;
 }
-
-QPushButton:hover {
-    background-color: #E23E57;
+QPushButton#addToCartButton:hover {
+    background-color: #28a745;
+    color: white;
+}
+QPushButton#addToCartButton:pressed {
+    background-color: #1e7e34;
+    color: white;
 }
 
-/* 4. Style the text labels */
-QLabel {
-    color: #1A1A1D;
+/* === CHECKOUT BUTTON === */
+QPushButton#checkoutButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #f0a500, stop:1 #e07b00);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 15px;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
+}
+QPushButton#checkoutButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #ffb700, stop:1 #f08c00);
+}
+QPushButton#checkoutButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #c87d00, stop:1 #a05e00);
+}
+
+/* === REMOVE BUTTON === */
+QPushButton#removeButton {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-weight: bold;
+    font-size: 14px;
+}
+QPushButton#removeButton:hover {
+    background-color: #c0392b;
+}
+
+/* === MENU BAR === */
+QMenuBar {
+    background-color: #fdebd0;
+    color: #7a3e00;
+}
+QStatusBar {
+    background-color: #fdebd0;
+    color: #b07820;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">

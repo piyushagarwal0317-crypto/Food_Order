@@ -207,7 +207,7 @@ QLineEdit:focus {
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="resources.qrc">:/biryani.png</pixmap>
+    <pixmap>:/biryani.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -226,7 +226,7 @@ QLineEdit:focus {
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="resources.qrc">:/hamburger.png</pixmap>
+    <pixmap>:/hamburger.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -254,6 +254,16 @@ QLineEdit:focus {
      <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: #E0E0E0; /* A nice, light faded gray */
+    color: #333333; /* Dark gray text so it's easy to read */
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 8px;
+    border: 1px solid #BDBDBD; /* Adds a very subtle outline */
+}</string>
+   </property>
    <property name="text">
     <string>Register</string>
    </property>
@@ -271,8 +281,6 @@ QLineEdit:focus {
   <zorder>label_6</zorder>
   <zorder>registerButton</zorder>
  </widget>
- <resources>
-  <include location="resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

@@ -145,6 +145,14 @@ public:
         registerButton = new QPushButton(LoginDialog);
         registerButton->setObjectName("registerButton");
         registerButton->setGeometry(QRect(70, 290, 91, 41));
+        registerButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #E0E0E0; /* A nice, light faded gray */\n"
+"    color: #333333; /* Dark gray text so it's easy to read */\n"
+"    font-weight: bold;\n"
+"    border-radius: 8px;\n"
+"    padding: 8px;\n"
+"    border: 1px solid #BDBDBD; /* Adds a very subtle outline */\n"
+"}"));
         backgroundLabel->raise();
         label->raise();
         label_2->raise();
